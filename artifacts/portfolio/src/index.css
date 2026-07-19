@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -50,41 +50,39 @@
 }
 
 :root, .dark {
-  /* Dark charcoal theme #0C0D11 */
-  --background: 228 17% 6%;
-  --foreground: 240 5% 96%;
+  --background: 231 21% 7%; /* #0D0E14 */
+  --foreground: 0 0% 100%; /* #FFFFFF */
 
-  --card: 228 16% 8%;
-  --card-foreground: 240 5% 96%;
-  --card-border: 232 9% 16%;
+  --card: 232 31% 10%; /* #111320 */
+  --card-foreground: 0 0% 100%;
+  --card-border: 231 26% 16%; /* #1E2133 */
 
-  --popover: 228 16% 8%;
-  --popover-foreground: 240 5% 96%;
-  --popover-border: 232 9% 16%;
+  --popover: 232 31% 10%;
+  --popover-foreground: 0 0% 100%;
+  --popover-border: 231 26% 16%;
 
-  /* Accent: Rust Orange #D95321 */
-  --primary: 16 75% 49%;
+  --primary: 225 100% 62%; /* #3B6BFF */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 230 11% 14%;
-  --secondary-foreground: 240 5% 96%;
+  --secondary: 232 31% 10%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: 228 10% 10%;
-  --muted-foreground: 231 6% 57%;
+  --muted: 231 21% 7%; /* Same as background for tabs etc */
+  --muted-foreground: 229 21% 55%; /* #7B82A0 */
 
-  --accent: 230 11% 14%;
-  --accent-foreground: 240 5% 96%;
+  --accent: 232 31% 10%;
+  --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 232 9% 16%;
-  --input: 232 9% 16%;
-  --ring: 16 75% 49%;
+  --border: 231 26% 16%; /* #1E2133 */
+  --input: 231 26% 16%;
+  --ring: 225 100% 62%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-mono: 'Space Mono', monospace;
-  --radius: 0rem; /* Sharp edges */
+  --radius: 0rem;
 }
 
 @layer base {

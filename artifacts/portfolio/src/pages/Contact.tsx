@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-import { useSendContactMessage } from "@workspace/api-client-react"
+import * as z from "zod"
+import { Mail, MapPin, Send } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
-import { ArrowRight, Mail, Send } from "lucide-react"
+import { useSendContactMessage } from "@workspace/api-client-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,19 +17,19 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Identifier must be at least 2 characters."),
-  email: z.string().email("Invalid transmission address."),
-  subject: z.string().min(3, "Subject parameter required."),
-  message: z.string().min(10, "Payload body too short."),
+const formSchema = z.object({
+  name: z.string().min(2, "Le nom doit contenir au moins 2 caractères."),
+  email: z.string().email("Adresse email invalide."),
+  subject: z.string().min(3, "Le sujet doit contenir au moins 3 caractères."),
+  message: z.string().min(10, "Le message doit contenir au moins 10 caractères."),
 })
 
 export default function Contact() {
   const { toast } = useToast()
   const sendMessage = useSendContactMessage()
 
-  const form = useForm<z.infer<typeof contactSchema>>({
-    resolver: zodResolver(contactSchema),
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -38,57 +38,83 @@ export default function Contact() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof contactSchema>) {
-    sendMessage.mutate(
-      { data: values },
-      {
-        onSuccess: () => {
-          toast({
-            title: "Transmission Complete",
-            description: "Your payload has been successfully delivered.",
-          })
-          form.reset()
-        },
-        onError: () => {
-          toast({
-            title: "Transmission Failed",
-            description: "Network interference detected. Please try again.",
-            variant: "destructive",
-          })
-        }
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    sendMessage.mutate({ data: values }, {
+      onSuccess: () => {
+        toast({
+          title: "Message envoyé",
+          description: "Merci pour votre message, je vous répondrai rapidement.",
+        })
+        form.reset()
+      },
+      onError: () => {
+        toast({
+          title: "Erreur",
+          description: "Une erreur est survenue lors de l'envoi. Veuillez réessayer.",
+          variant: "destructive"
+        })
       }
-    )
+    })
   }
 
   return (
-    <div className="space-y-16 pb-20 animate-in fade-in duration-500 max-w-4xl mx-auto">
-      <header className="space-y-4 border-b border-border pb-8">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase">Communicate</h1>
-        <p className="text-muted-foreground font-light text-lg">
-          Establish a direct connection. Open to project inquiries, training sessions, and technical discourse.
+    <div className="p-6 md:p-12 lg:p-20 max-w-6xl mx-auto w-full">
+      <div className="mb-12 text-center">
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+          <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest">COMMUNICATION</span>
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">CONTACT</h1>
+        <p className="text-[15px] text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Un projet, une question ou une proposition de collaboration ? N'hésitez pas à me contacter via ce formulaire.
         </p>
-      </header>
+      </div>
 
-      <div className="grid md:grid-cols-[1fr_300px] gap-12 lg:gap-24 relative">
-        <div className="space-y-8">
-          <div className="space-y-2">
-            <h2 className="text-xl font-bold tracking-tight">Direct Interface</h2>
-            <p className="text-sm text-muted-foreground font-light">Fill out the parameters below to initiate a secure transmission.</p>
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
+        <div className="lg:col-span-2 space-y-8">
+          <div className="bg-card border border-border p-8">
+            <h3 className="text-sm font-bold tracking-widest uppercase text-foreground mb-6">Informations</h3>
+            
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-background border border-border shrink-0">
+                  <Mail className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-1">Email</p>
+                  <a href="mailto:contact@zmbstack.com" className="text-sm text-foreground hover:text-primary transition-colors font-medium">
+                    contact@zmbstack.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-background border border-border shrink-0">
+                  <MapPin className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-1">Localisation</p>
+                  <p className="text-sm text-foreground font-medium">Paris, France<br/>(Remote possible)</p>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
 
+        <div className="lg:col-span-3">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-card border border-border p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Identifier</FormLabel>
+                      <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Nom complet</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" className="rounded-none border-border bg-card/50 focus-visible:ring-primary h-12" {...field} />
+                        <Input placeholder="John Doe" className="rounded-none border-border bg-background h-12 focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0" {...field} />
                       </FormControl>
-                      <FormMessage className="font-mono text-xs" />
+                      <FormMessage className="text-xs" />
                     </FormItem>
                   )}
                 />
@@ -97,11 +123,11 @@ export default function Contact() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Return Address</FormLabel>
+                      <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Adresse Email</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="john@example.com" className="rounded-none border-border bg-card/50 focus-visible:ring-primary h-12" {...field} />
+                        <Input placeholder="john@example.com" className="rounded-none border-border bg-background h-12 focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0" {...field} />
                       </FormControl>
-                      <FormMessage className="font-mono text-xs" />
+                      <FormMessage className="text-xs" />
                     </FormItem>
                   )}
                 />
@@ -112,11 +138,11 @@ export default function Contact() {
                 name="subject"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Subject Line</FormLabel>
+                    <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Sujet</FormLabel>
                     <FormControl>
-                      <Input placeholder="Project Inquiry / Training Request" className="rounded-none border-border bg-card/50 focus-visible:ring-primary h-12" {...field} />
+                      <Input placeholder="Proposition de mission" className="rounded-none border-border bg-background h-12 focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0" {...field} />
                     </FormControl>
-                    <FormMessage className="font-mono text-xs" />
+                    <FormMessage className="text-xs" />
                   </FormItem>
                 )}
               />
@@ -126,55 +152,26 @@ export default function Contact() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Payload Body</FormLabel>
+                    <FormLabel className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Message</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Detail your requirements here..." 
-                        className="rounded-none border-border bg-card/50 focus-visible:ring-primary min-h-[150px] resize-y" 
+                        placeholder="Décrivez votre besoin..." 
+                        className="rounded-none border-border bg-background min-h-[160px] resize-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:ring-offset-0" 
                         {...field} 
                       />
                     </FormControl>
-                    <FormMessage className="font-mono text-xs" />
+                    <FormMessage className="text-xs" />
                   </FormItem>
                 )}
               />
 
-              <Button 
-                type="submit" 
-                disabled={sendMessage.isPending}
-                className="rounded-none h-12 px-8 font-mono tracking-wide uppercase w-full sm:w-auto"
-              >
-                {sendMessage.isPending ? (
-                  <span className="flex items-center gap-2"><span className="w-2 h-2 bg-primary-foreground rounded-full animate-ping" /> Transmitting...</span>
-                ) : (
-                  <span className="flex items-center gap-2">Execute Transmission <Send className="w-4 h-4 ml-2" /></span>
-                )}
+              <Button type="submit" disabled={sendMessage.isPending} className="w-full h-12 rounded-none text-xs font-bold uppercase tracking-wider gap-2">
+                {sendMessage.isPending ? "ENVOI EN COURS..." : "ENVOYER LE MESSAGE"}
+                {!sendMessage.isPending && <Send className="w-4 h-4" />}
               </Button>
             </form>
           </Form>
         </div>
-
-        <aside className="space-y-8">
-          <div className="p-6 border border-border bg-secondary/20 space-y-6">
-            <h3 className="font-mono text-xs uppercase tracking-widest text-primary">Alternative Nodes</h3>
-            
-            <div className="space-y-4">
-              <a href="mailto:hello@zmbstack.com" className="flex items-start gap-3 group text-sm font-light hover:text-primary transition-colors">
-                <Mail className="w-4 h-4 text-muted-foreground group-hover:text-primary mt-0.5" />
-                <div>
-                  <div className="font-medium text-foreground">Direct Email</div>
-                  <div className="font-mono text-xs text-muted-foreground mt-1">hello@zmbstack.com</div>
-                </div>
-              </a>
-              
-              <div className="pt-4 border-t border-border/50">
-                <p className="text-xs text-muted-foreground font-mono leading-relaxed">
-                  Response protocols typically complete within 24-48 hours during standard operating cycles.
-                </p>
-              </div>
-            </div>
-          </div>
-        </aside>
       </div>
     </div>
   )

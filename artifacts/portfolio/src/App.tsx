@@ -12,6 +12,9 @@ import Teaching from '@/pages/Teaching';
 import Blog from '@/pages/Blog';
 import BlogPostDetail from '@/pages/BlogPostDetail';
 import Contact from '@/pages/Contact';
+import Competences from '@/pages/Competences';
+import Experiences from '@/pages/Experiences';
+import Contenu from '@/pages/Contenu';
 import NotFound from '@/pages/not-found';
 
 const queryClient = new QueryClient({
@@ -32,6 +35,9 @@ function Router() {
         <Route path="/projects/:slug" component={ProjectDetail} />
         <Route path="/about" component={About} />
         <Route path="/teaching" component={Teaching} />
+        <Route path="/competences" component={Competences} />
+        <Route path="/experiences" component={Experiences} />
+        <Route path="/contenu" component={Contenu} />
         <Route path="/blog" component={Blog} />
         <Route path="/blog/:slug" component={BlogPostDetail} />
         <Route path="/contact" component={Contact} />
