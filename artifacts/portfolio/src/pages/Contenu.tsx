@@ -1,4 +1,4 @@
-import { SiTiktok, SiYoutube, SiInstagram } from "react-icons/si"
+import { SiTiktok, SiYoutube } from "react-icons/si"
 import { Play, TrendingUp, Users } from "lucide-react"
 
 export default function Contenu() {
