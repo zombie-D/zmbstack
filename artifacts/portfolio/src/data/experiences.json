@@ -1,0 +1,44 @@
+{
+    "formation": [
+        {
+            "org": "Formation supérieure",
+            "date": "2023 - 2026",
+            "title": "Licence professionnelle en Systèmes Informatiques",
+            "description": "Formation en systèmes informatiques, avec une spécialisation progressive vers le développement web full-stack et la cybersécurité offensive, menée en parallèle de projets concrets, de missions freelance et de formations dispensées.",
+            "description2": null,
+            "tags": []
+        }
+    ],
+    "cybersecurite": {
+        "statBadge": "+20 audits réalisés",
+        "entries": [
+            {
+                "org": "Contenu TikTok & Missions clients",
+                "date": "2026 - Présent",
+                "title": "Pentester Web indépendant (Black Box)",
+                "description": "Réalisation d'audits de sécurité offensive en boîte noire exclusivement sur des applications web, à la demande de particuliers et d'entreprises. Plus de 20 applications auditées à ce jour, avec rapport de sécurité complet et confidentiel remis à chaque client.",
+                "description2": "Une sélection des vulnérabilités trouvées est présentée en vidéo sur TikTok, avec l'accord explicite de chaque client, à des fins de sensibilisation et de visibilité professionnelle.",
+                "tags": [
+                    "OWASP Top 10",
+                    "Black Box Testing",
+                    "Web App Security",
+                    "Reporting"
+                ]
+            }
+        ]
+    },
+    "enseignement": [
+        {
+            "org": "Communauté Discord",
+            "date": "2025 - Présent",
+            "title": "Formateur en développement web",
+            "description": "Conception, vente et animation de formations en ligne au développement web via Discord. Accompagnement d'apprenants du niveau débutant à intermédiaire, avec supervision de projets pratiques, correction de code et suivi personnalisé de la progression.",
+            "description2": null,
+            "tags": [
+                "Pédagogie",
+                "JavaScript",
+                "Suivi de projets"
+            ]
+        }
+    ]
+}

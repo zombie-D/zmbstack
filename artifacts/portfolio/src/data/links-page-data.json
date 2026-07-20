@@ -1,0 +1,35 @@
+{
+    "totalViewsBadge": "10,2M+ vues cumulées sur tous les réseaux",
+    "socials": [
+        {
+            "platform": "tiktok",
+            "label": "TikTok — ZMB Stack",
+            "sub": "Cybersécurité, audits & tech · 97,3K abonnés · 10,2M vues",
+            "url": "https://www.tiktok.com/@zmb_stack?is_from_webapp=1&sender_device=pc"
+        },
+        {
+            "platform": "tiktok",
+            "label": "TikTok — ZMB Stack | Apprendre",
+            "sub": "Vulgarisation informatique & web · 2,3K abonnés · 74,5K vues",
+            "url": "https://www.tiktok.com/@zmb_stack1?is_from_webapp=1&sender_device=pc"
+        },
+        {
+            "platform": "youtube",
+            "label": "YouTube — ZMB Stack",
+            "sub": "Tutoriels algorithmie & dev · Bientôt relancée",
+            "url": "https://youtube.com/@zmb_stack?si=SbG05zarCfwRJRh3"
+        },
+        {
+            "platform": "whatsapp",
+            "label": "Chaîne WhatsApp",
+            "sub": "Actus, astuces & annonces en direct",
+            "url": "https://whatsapp.com/channel/0029Vb6yDBlG3R3m8gEPfL1Q"
+        },
+        {
+            "platform": "github",
+            "label": "GitHub",
+            "sub": "18 dépôts publics",
+            "url": "https://github.com/zombie-D"
+        }
+    ]
+}

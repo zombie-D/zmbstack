@@ -1,0 +1,123 @@
+[
+    {
+        "id": "edtrack",
+        "title": "EdTrack - ESCAE",
+        "category": "Dashboard Admin",
+        "thumbStyle": "light-dashboard",
+        "description": "Plateforme de gestion académique pour l'ESCAE Bénin. Elle centralise les données universitaires et intègre un système biométrique avec capteur d'empreinte digitale pour le suivi strict des présences.",
+        "tags": [
+            "Laravel",
+            "TailwindCSS",
+            "PHP"
+        ],
+        "isPrivate": true,
+        "image": "/project-edtrack.png"
+    },
+    {
+        "id": "neotokflow",
+        "title": "NeoTokFlow",
+        "category": "Plateforme B2B",
+        "thumbStyle": "light-dashboard",
+        "description": "Plateforme de prestation de services innovante permettant aux créateurs en Afrique d'accéder facilement à la monétisation de leurs comptes TikTok.",
+        "tags": [
+            "PHP",
+            "JavaScript",
+            "MySQL",
+            "Paiements"
+        ],
+        "isPrivate": false,
+        "image": "/project-neotokflow.png"
+    },
+    {
+        "id": "collabconnect",
+        "title": "CollabConnect API",
+        "category": "API REST",
+        "thumbStyle": "dark-glow",
+        "glowColor": "#6366f1",
+        "description": "API backend complète pour une plateforme collaborative : gestion des utilisateurs, des espaces de travail partagés, des messages en temps réel et des permissions granulaires.",
+        "tags": [
+            "Django",
+            "Node.js",
+            "WebSocket",
+            "REST API"
+        ],
+        "isPrivate": true
+    },
+    {
+        "id": "zmbacademy",
+        "title": "ZMB Academy Core",
+        "category": "EdTech",
+        "thumbStyle": "light-dashboard",
+        "description": "Développement front-end et design UI d'une plateforme de e-learning moderne, avec suivi fin du parcours pédagogique et système de statistiques.",
+        "tags": [
+            "Tailwind",
+            "React",
+            "TypeScript",
+            "Framer Motion"
+        ],
+        "isPrivate": true,
+        "image": "/zmbacademy.jpg"
+    },
+    {
+        "id": "flozia",
+        "title": "Flozia App",
+        "category": "Application Mobile",
+        "thumbStyle": "light-dashboard",
+        "description": "Application mobile (React Native) accompagnant les femmes dans la gestion de leur cycle menstruel : suivi quotidien, prédictions intelligentes et possibilité de partage en couple.",
+        "tags": [
+            "React Native",
+            "Expo Router",
+            "Firebase",
+            "Mobile UI"
+        ],
+        "isPrivate": true,
+        "isPortrait": true,
+        "image": "/project-flozia.jpg"
+    },
+    {
+        "id": "sysuniv",
+        "title": "Système Universitaire",
+        "category": "Multi-Rôles",
+        "thumbStyle": "dark-glow",
+        "glowColor": "#8B5CF6",
+        "description": "Plateforme web complète de gestion des notes universitaires avec 4 rôles distincts : Admin, Professeur, Étudiant et Parent. Moyennes automatiques, bulletins téléchargeables et notifications en temps réel.",
+        "tags": [
+            "React",
+            "Laravel",
+            "Multi-Rôles",
+            "PDF"
+        ],
+        "isPrivate": true,
+        "image": "/project-sysuniv.jpg"
+    },
+    {
+        "id": "escaeref",
+        "title": "ESCAE Bénin — Refonte",
+        "category": "Site Institutionnel",
+        "thumbStyle": "light-dashboard",
+        "description": "Refonte complète du site web de l'ESCAE Bénin : présentation de l'université, vitrines des filières (Licence & Master), galerie campus et débouchés professionnels.",
+        "tags": [
+            "HTML / CSS",
+            "JavaScript",
+            "UI/UX Design",
+            "Responsive"
+        ],
+        "isPrivate": false,
+        "image": "/project-escaef.png"
+    },
+    {
+        "id": "extension-php",
+        "title": "PHP Dev Extension",
+        "category": "Extension VS Code",
+        "thumbStyle": "dark-glow",
+        "glowColor": "#6366f1",
+        "description": "Extension de développement PHP Vanilla pour VS Code. Auto-complétion intelligente couvrant les cas d'usage courants : connexion PDO, CRUD complet, formulaires avec validation et logique de traitement.",
+        "tags": [
+            "VS Code API",
+            "PHP",
+            "PDO",
+            "Auto-complétion"
+        ],
+        "isPrivate": false
+    }
+]

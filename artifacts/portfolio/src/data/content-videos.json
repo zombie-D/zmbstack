@@ -1,0 +1,101 @@
+[
+    {
+        "id": "video-3",
+        "title": "Les métiers de l'informatique",
+        "platform": "tiktok",
+        "views": "19 600",
+        "url": "https://www.tiktok.com/@zmb_stack1",
+        "thumbnail": "/thumb-metiers.png",
+        "gradientFrom": "#2a1a4a",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#7c3aed"
+    },
+    {
+        "id": "video-9",
+        "title": "Audit de sécurité — Découverte de failles",
+        "platform": "tiktok",
+        "views": "75 100",
+        "url": "https://www.tiktok.com/@zmb_stack/video/7653536118079491335",
+        "thumbnail": "/thumb-audit.png",
+        "gradientFrom": "#1a1a2e",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#3b82f6"
+    },
+    {
+        "id": "video-2",
+        "title": "Comment devenir Développeur ?",
+        "platform": "tiktok",
+        "views": "8 046",
+        "url": "https://www.tiktok.com/@zmb_stack1",
+        "thumbnail": "/thumb-metiers.png",
+        "gradientFrom": "#1a3a2e",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#10b981"
+    },
+    {
+        "id": "video-4",
+        "title": "Introduction à l'algorithmie",
+        "platform": "youtube",
+        "views": "235",
+        "url": "https://youtube.com/@zmb_stack",
+        "thumbnail": "/thumb-algo.png",
+        "gradientFrom": "#3a1a1a",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#ef4444"
+    },
+    {
+        "id": "video-8",
+        "title": "Audit de sécurité — Découverte de failles",
+        "platform": "tiktok",
+        "views": "11 200",
+        "url": "https://www.tiktok.com/@zmb_stack/video/7643943995638287634",
+        "thumbnail": "/thumb-audit.png",
+        "gradientFrom": "#1a1a2e",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#3b82f6"
+    },
+    {
+        "id": "video-1",
+        "title": "Comment devenir Expert en Cybersécurité ?",
+        "platform": "tiktok",
+        "views": "4 748",
+        "url": "https://www.tiktok.com/@zmb_stack1",
+        "thumbnail": "/thumb-metiers.png",
+        "gradientFrom": "#1a2a4a",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#3b82f6"
+    },
+    {
+        "id": "video-7",
+        "title": "Audit de sécurité — Découverte de failles",
+        "platform": "tiktok",
+        "views": "10 400",
+        "url": "https://www.tiktok.com/@zmb_stack/video/7645760907070524680",
+        "thumbnail": "/thumb-audit.png",
+        "gradientFrom": "#1a1a2e",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#3b82f6"
+    },
+    {
+        "id": "video-5",
+        "title": "Apprendre l'algorithmie - Les conditions",
+        "platform": "youtube",
+        "views": "85",
+        "url": "https://youtube.com/@zmb_stack",
+        "thumbnail": "/thumb-algo.png",
+        "gradientFrom": "#3a1a1a",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#ef4444"
+    },
+    {
+        "id": "video-6",
+        "title": "TP final : Apprendre l'algorithmie",
+        "platform": "youtube",
+        "views": "107",
+        "url": "https://youtube.com/@zmb_stack",
+        "thumbnail": "/thumb-algo.png",
+        "gradientFrom": "#3a1a1a",
+        "gradientTo": "#0a0a0f",
+        "glowColor": "#ef4444"
+    }
+]

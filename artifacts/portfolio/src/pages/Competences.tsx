@@ -1,71 +1,117 @@
-import { Code2, Server, Wrench, Smartphone, Monitor, Database, GitBranch, Terminal } from "lucide-react"
+import React from 'react';
+import { Server, Monitor, Settings, GraduationCap } from 'lucide-react';
+import { motion } from 'framer-motion';
+import skillsData from '../data/skills.json';
+
+const categoryIcons = {
+  "Backend & Bases de données": Server,
+  "Frontend": Monitor,
+  "Outils & DevOps": Settings,
+  "Pédagogie & Formation": GraduationCap
+};
 
 export default function Competences() {
-  const skillCategories = [
-    {
-      title: "FRONTEND",
-      icon: Monitor,
-      skills: ["React.js", "Vue.js", "Next.js", "TypeScript", "Tailwind CSS", "HTML5/CSS3"]
-    },
-    {
-      title: "BACKEND",
-      icon: Server,
-      skills: ["Node.js", "Express", "NestJS", "Python", "Django", "PHP"]
-    },
-    {
-      title: "BASE DE DONNÉES",
-      icon: Database,
-      skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Supabase", "Prisma ORM"]
-    },
-    {
-      title: "OUTILS & DÉPLOIEMENT",
-      icon: Wrench,
-      skills: ["Docker", "Vercel", "AWS", "Git/GitHub", "Linux", "CI/CD"]
-    }
-  ]
+  // Convert object to array for mapping
+  const categories = Object.entries(skillsData);
 
   return (
-    <div className="p-6 md:p-12 lg:p-20 max-w-5xl">
+    <div className="px-6 lg:px-12 py-12 lg:py-16 min-h-[calc(100vh-65px)] lg:min-h-screen">
+      <style>{`
+        .comp-categories { display: flex; flex-direction: column; gap: 36px; }
+        .comp-cat-title {
+          font-size: .95rem; font-weight: 700; color: #fff;
+          margin-bottom: 18px; display: flex; align-items: center; gap: 10px;
+        }
+        .icon-sq {
+          width: 34px; height: 34px; border-radius: 9px; background: var(--badge-bg);
+          display: flex; align-items: center; justify-content: center;
+          color: var(--accent-blue); font-size: 1rem; font-weight: 800;
+        }
+        .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        @media (max-width: 1024px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .skills-grid { grid-template-columns: 1fr; } }
+        
+        .skill-card {
+          background: var(--bg-card); border: 1px solid var(--border-subtle);
+          border-radius: 12px; padding: 18px;
+          display: flex; flex-direction: column; gap: 12px;
+          transition: all 0.2s ease;
+        }
+        .skill-card:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-2px); }
+        .skill-top { display: flex; align-items: center; justify-content: space-between; }
+        .skill-name { font-size: .88rem; font-weight: 700; color: #fff; }
+        .skill-pct { font-size: .75rem; color: var(--accent-blue); font-weight: 700; }
+        .skill-bar-track { height: 6px; background: var(--bg-card-hover); border-radius: 4px; overflow: hidden; }
+        .skill-bar-fill {
+          height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa);
+          border-radius: 4px;
+        }
+        .skill-icon {
+          width: 38px; height: 38px; border-radius: 10px;
+          display: flex; align-items: center; justify-content: center;
+          font-weight: 800; font-size: .85rem; color: #fff;
+        }
+      `}</style>
+
+      {/* Header */}
       <div className="mb-12">
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-          <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest">MON EXPERTISE</span>
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">COMPÉTENCES</h1>
-        <p className="text-[15px] text-muted-foreground max-w-2xl leading-relaxed">
-          Un ensemble de technologies maîtrisées pour concevoir des applications web modernes, performantes et évolutives. De la conception de l'interface utilisateur à l'architecture backend complexe.
+        <span className="inline-flex items-center gap-2 bg-[var(--badge-bg)] text-[var(--accent-blue)] rounded-full px-4 py-2 text-[0.75rem] font-bold uppercase mb-6">
+          <div className="w-2 h-2 rounded-full bg-[var(--badge-dot)] animate-pulse" />
+          Expertise technique
+        </span>
+        <h1 className="text-[2rem] md:text-[2.5rem] font-[800] text-white mb-4">
+          Mes <span className="text-[var(--accent-blue)]">Compétences</span>
+        </h1>
+        <p className="text-[0.9rem] text-[var(--text-secondary)] max-w-[520px] leading-relaxed">
+          Un aperçu des technologies, langages et outils que je
+          maîtrise, acquis au fil de mes projets professionnels et de mon parcours
+          de formateur.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {skillCategories.map((category, i) => (
-          <div key={i} className="border border-border bg-card p-8">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-3 bg-background border border-border">
-                <category.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h2 className="text-sm font-bold tracking-widest uppercase">{category.title}</h2>
-            </div>
-            
-            <div className="flex flex-wrap gap-2.5">
-              {category.skills.map((skill, j) => (
-                <span key={j} className="px-3 py-1.5 text-xs font-medium text-foreground bg-background border border-border">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* Catégories de compétences */}
+      <div className="comp-categories">
+        {categories.map(([catName, skills]) => {
+          const IconStyle = categoryIcons[catName as keyof typeof categoryIcons] || Server;
+          return (
+            <div key={catName}>
+              <h3 className="comp-cat-title">
+                <div className="icon-sq">
+                  <IconStyle className="w-[18px] h-[18px]" strokeWidth={2.5} />
+                </div>
+                {catName}
+              </h3>
 
-      <div className="mt-12 p-8 border border-border bg-primary/5 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 className="text-lg font-bold text-foreground mb-2">Vous cherchez un profil spécifique ?</h3>
-          <p className="text-sm text-muted-foreground">Je m'adapte rapidement aux nouvelles technologies et environnements techniques.</p>
-        </div>
-        <a href="/contact" className="px-6 py-3 bg-primary text-white text-xs font-bold uppercase tracking-wider shrink-0 hover:bg-primary/90 transition-colors">
-          PARLONS DE VOTRE STACK
-        </a>
+              <div className="skills-grid">
+                {skills.map((skill: any) => (
+                  <div key={skill.name} className="skill-card">
+                    <div className="flex items-center gap-3 mb-1">
+                      <div className="skill-icon" style={{ background: skill.iconBg, color: skill.iconTextColor || '#fff' }}>
+                        {skill.iconText}
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <div className="skill-top">
+                          <span className="skill-name">{skill.name}</span>
+                          <span className="skill-pct">{skill.level}%</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="skill-bar-track mt-1">
+                      <motion.div
+                        className="skill-bar-fill"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        viewport={{ once: true, margin: "-10px" }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

@@ -1,0 +1,142 @@
+{
+    "Backend & Bases de données": [
+        {
+            "name": "PHP",
+            "level": 90,
+            "iconBg": "#6b46c1",
+            "iconText": "PHP"
+        },
+        {
+            "name": "Node.js",
+            "level": 85,
+            "iconBg": "#173a26",
+            "iconText": "JS"
+        },
+        {
+            "name": "Python / Flask",
+            "level": 60,
+            "iconBg": "#1a2a3a",
+            "iconText": "Py"
+        },
+        {
+            "name": "MySQL / PostgreSQL",
+            "level": 88,
+            "iconBg": "#1a3a5c",
+            "iconText": "DB"
+        }
+    ],
+    "Frontend": [
+        {
+            "name": "JavaScript",
+            "level": 92,
+            "iconBg": "#f0db4f",
+            "iconTextColor": "#111",
+            "iconText": "JS"
+        },
+        {
+            "name": "React",
+            "level": 78,
+            "iconBg": "#0d1117",
+            "iconTextColor": "#61dafb",
+            "iconText": "Rx"
+        },
+        {
+            "name": "TypeScript",
+            "level": 70,
+            "iconBg": "#00507a",
+            "iconText": "Ts"
+        },
+        {
+            "name": "Bootstrap / Tailwind",
+            "level": 85,
+            "iconBg": "#2a1a4a",
+            "iconText": "Bs"
+        }
+    ],
+    "Outils & DevOps": [
+        {
+            "name": "Git / GitHub",
+            "level": 90,
+            "iconBg": "#3a1a1a",
+            "iconText": "Git"
+        },
+        {
+            "name": "Docker",
+            "level": 40,
+            "iconBg": "#0a2e42",
+            "iconText": "Dk"
+        },
+        {
+            "name": "API REST",
+            "level": 75,
+            "iconBg": "#1a1a1a",
+            "iconText": "Fl"
+        }
+    ],
+    "IA & Productivité Dev": [
+        {
+            "name": "Prompt Engineering",
+            "level": 90,
+            "iconBg": "#1a1a3a",
+            "iconText": "AI"
+        },
+        {
+            "name": "Copilot / Cursor / Claude",
+            "level": 88,
+            "iconBg": "#0d1a2e",
+            "iconText": "Co"
+        },
+        {
+            "name": "Génération de code IA",
+            "level": 85,
+            "iconBg": "#1a2a1a",
+            "iconTextColor": "#4ade80",
+            "iconText": "→"
+        },
+        {
+            "name": "Workflow IA (automatisation)",
+            "level": 80,
+            "iconBg": "#2a1a2a",
+            "iconTextColor": "#c084fc",
+            "iconText": "Wf"
+        }
+    ],
+    "Sécurité Web Offensive": [
+        {
+            "name": "Black Box Testing",
+            "level": 80,
+            "iconBg": "#1a0a0a",
+            "iconTextColor": "#f87171",
+            "iconText": "BB"
+        },
+        {
+            "name": "Burp Suite / OWASP",
+            "level": 75,
+            "iconBg": "#1a0d00",
+            "iconTextColor": "#fb923c",
+            "iconText": "Bp"
+        },
+        {
+            "name": "Reconnaissance & OSINT",
+            "level": 78,
+            "iconBg": "#0a0a1a",
+            "iconTextColor": "#818cf8",
+            "iconText": "Os"
+        },
+        {
+            "name": "Exploitation de vulnérabilités",
+            "level": 70,
+            "iconBg": "#1a0a1a",
+            "iconTextColor": "#e879f9",
+            "iconText": "Ex"
+        }
+    ],
+    "Pédagogie & Formation": [
+        {
+            "name": "Pédagogie / Formation",
+            "level": 95,
+            "iconBg": "#1a3a2e",
+            "iconText": "Ed"
+        }
+    ]
+}

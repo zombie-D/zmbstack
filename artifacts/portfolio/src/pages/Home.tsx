@@ -1,155 +1,254 @@
-import { useListProjects } from "@workspace/api-client-react"
-import { ArrowUpRight, Calendar, Grid, GraduationCap, Users, ArrowRight } from "lucide-react"
+import { ArrowUpRight, Calendar, Code, GraduationCap, Users, ArrowRight, ShoppingCart } from "lucide-react"
 import { Link } from "wouter"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import projectsData from "@/data/projects.json"
 
 export default function Home() {
-  const { data: projects, isLoading: projectsLoading } = useListProjects()
-
-  const topProjects = projects?.slice(0, 3) || []
-
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Top Bar */}
-      <div className="sticky top-0 md:top-0 z-30 flex items-center justify-between px-6 py-4 border-b border-border bg-background/95 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-          <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-widest">FORMATEUR & DÉVELOPPEUR WEB</span>
+    <div className="flex flex-col pt-2 relative">
+      {/* Top Bar - Header */}
+      <div className="flex items-start sm:items-center justify-between px-6 lg:px-10 py-5 gap-4">
+        {/* Badge Formateur & Dev */}
+        <div className="flex items-start sm:items-center gap-2">
+          <div className="w-[6px] h-[6px] rounded-full bg-[var(--accent-blue)] mt-1.5 sm:mt-0 flex-shrink-0" />
+          <span className="text-[0.65rem] sm:text-[0.7rem] font-[600] uppercase tracking-[0.05em] text-[var(--text-secondary)] leading-tight">
+            FORMATEUR EN DÉVELOPPEMENT <br className="sm:hidden" />& CYBERSÉCURITÉ WEB
+          </span>
         </div>
-        <Button asChild variant="outline" size="sm" className="h-8 text-[11px] font-bold uppercase tracking-wider border-border hover:bg-border/50">
-          <Link href="/contact" className="flex items-center gap-1.5">
-            ME CONTACTER <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </Button>
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}
+          className="border border-[rgba(255,255,255,0.1)] text-[var(--text-secondary)] hover:text-white rounded-lg px-3 sm:px-4 py-2 font-[600] text-[0.65rem] sm:text-[0.7rem] tracking-widest flex items-center justify-center gap-1 sm:gap-2 hover:bg-[rgba(255,255,255,0.03)] transition-colors uppercase text-center flex-shrink-0"
+        >
+          CONTACTER MOI <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+        </button>
       </div>
 
       {/* Hero Section */}
-      <section className="flex flex-col-reverse md:flex-row flex-1 relative border-b border-border">
-        {/* Left Text Content */}
-        <div className="flex-1 p-6 md:p-12 lg:p-20 flex flex-col justify-center">
-          <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.1] tracking-tight mb-6">
-            <span className="text-foreground">Je conçois des solutions</span><br/>
-            <span className="text-foreground">digitales. </span>
-            <span className="text-primary">Je transmets</span>
-            <span className="text-foreground"> une</span><br/>
-            <span className="text-foreground">expertise. </span>
-            <span className="text-primary">J'inspire</span>
-            <span className="text-foreground"> l'avenir.</span>
+      <section className="flex flex-col lg:flex-row relative items-center mb-0 lg:mb-8 border-b-0 lg:border-b border-[rgba(255,255,255,0.04)] lg:min-h-[600px]">
+        {/* Right: Photo — desktop uniquement avec effet glow studio */}
+        <div className="hidden lg:flex absolute top-[-60px] right-0 lg:w-[45%] h-[700px] items-end justify-end z-0 pointer-events-none opacity-100">
+          {/* Glow lumineux derrière le sujet (style affiche studio) */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-[400px] h-[600px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.35)_0%,rgba(120,80,220,0.15)_40%,transparent_70%)] blur-[30px]" />
+          </div>
+          <img
+            src="/desktop.png"
+            alt="Portrait"
+            className="w-full h-full max-h-[700px] object-contain object-bottom relative z-10"
+            style={{
+              maskImage: 'linear-gradient(to left, black 50%, transparent 100%), linear-gradient(to bottom, black 60%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%), linear-gradient(to bottom, black 60%, transparent 100%)',
+              WebkitMaskComposite: 'source-in',
+              maskComposite: 'intersect'
+            }}
+          />
+        </div>
+
+        {/* Left: Content */}
+        <div className="w-full lg:w-[60%] flex flex-col justify-center px-6 lg:pl-[120px] lg:pr-10 z-10 pt-6 lg:py-16">
+          <h1 className="text-[clamp(2.2rem,3.8vw,4.5rem)] font-[700] leading-[1.1] tracking-[-0.015em] mb-6 text-white max-w-[800px]">
+            Je conçois des solutions digitales. <span className="text-[var(--accent-blue)]">Je transmets</span> une expertise. <span className="text-[var(--accent-blue)]">Je traque</span> les failles avant les autres.
           </h1>
-          
-          <p className="text-[15px] text-muted-foreground leading-relaxed max-w-[540px] mb-10">
-            Développeur passionné spécialisé dans la création d'applications web performantes et formateur engagé dans l'accompagnement des apprenants vers l'excellence.
+
+          <p className="text-[0.9rem] sm:text-[0.95rem] text-[var(--text-secondary)] leading-[1.65] max-w-[500px] mb-8">
+            Développeur passionné spécialisé dans la création d'applications web performantes, formateur engagé, et <strong>créateur de contenu éducatif (+100k abonnés)</strong> pour accompagner les passionnés vers l'excellence.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="h-12 px-8 text-xs font-bold uppercase tracking-wider">
-              <Link href="/projects" className="flex items-center gap-2">
-                DÉCOUVRIR MES PROJETS <ArrowUpRight className="w-4 h-4" />
+          <div className="flex flex-col gap-6 w-full sm:w-auto mb-10 overflow-visible">
+            {/* Réseaux Sociaux (Au-dessus des boutons) */}
+            <div className="flex items-center justify-center sm:justify-start gap-4">
+              <span className="text-[0.7rem] text-[var(--text-muted)] font-[600] uppercase tracking-widest hidden sm:block">Rejoignez-moi :</span>
+              <a href="https://www.tiktok.com/@zmb_stack?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer" className="text-[#00f2fe] border border-[#00f2fe]/30 rounded-full p-2.5 bg-[#00f2fe]/10 hover:bg-[#00f2fe]/20 hover:border-[#00f2fe] transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
+              </a>
+              <a href="https://whatsapp.com/channel/0029Vb6yDBlG3R3m8gEPfL1Q" target="_blank" rel="noreferrer" className="text-[#25D366] border border-[#25D366]/30 rounded-full p-2.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 hover:border-[#25D366] transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              </a>
+            </div>
+
+            {/* Boutons Call to action */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full sm:w-auto">
+              <Link
+                href="/projects"
+                className="bg-[var(--accent-blue)] text-white w-full sm:w-auto font-[600] rounded-lg px-6 py-4 sm:py-3.5 flex items-center justify-center gap-2 hover:bg-[var(--accent-blue-hover)] transition-colors text-[0.75rem] uppercase tracking-wider"
+              >
+                DÉCOUVRIR MES PROJETS <ArrowUpRight className="w-4 h-4 ml-1" />
               </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="h-12 px-8 text-xs font-bold uppercase tracking-wider border-muted-foreground/30 hover:bg-border/50">
-              <Link href="/contact" className="flex items-center gap-2">
-                ME CONTACTER <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </Button>
+
+              <a
+                href="https://zmb-stack.mychariow.shop"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#8B5CF6] text-white w-full sm:w-auto font-[600] rounded-lg px-6 py-4 sm:py-3.5 flex items-center justify-center gap-2 hover:bg-[#7c3aed] transition-colors text-[0.75rem] uppercase tracking-wider"
+              >
+                <ShoppingCart className="w-4 h-4" />
+                MA BOUTIQUE <ArrowUpRight className="w-4 h-4 ml-1" />
+              </a>
+
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}
+                className="bg-[#0D0D12] border border-[rgba(255,255,255,0.05)] text-white w-full sm:w-auto font-[600] rounded-lg px-6 py-4 sm:py-3.5 flex items-center justify-center gap-2 hover:bg-[rgba(255,255,255,0.03)] transition-colors text-[0.75rem] uppercase tracking-wider"
+              >
+                CONTACTER MOI <ArrowUpRight className="w-4 h-4 ml-1" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Right Photo */}
-        <div className="w-full md:w-1/2 h-[50vh] md:h-auto relative bg-card flex-shrink-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent z-10 hidden md:block w-32" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent z-10 md:hidden h-32 bottom-0 top-auto" />
-          <img 
-            src="/hero-photo.jpg" 
-            alt="Portrait ZMB Stack" 
-            className="w-full h-full object-cover object-center"
+        {/* Photo mobile — dans le flux, après les boutons CTA */}
+        <div className="flex lg:hidden w-full px-6 pb-8 justify-center pointer-events-none">
+          <img
+            src="/mee.png"
+            alt="Portrait"
+            className="w-[280px] max-w-full object-contain object-bottom opacity-80"
+            style={{
+              maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)'
+            }}
           />
         </div>
       </section>
 
-      {/* Stats Row */}
-      <section className="grid grid-cols-2 md:grid-cols-4 border-b border-border bg-card">
+      {/* Stats Bar */}
+      <section className="grid grid-cols-2 lg:grid-cols-4 px-4 sm:px-6 lg:pl-[120px] lg:px-12 py-10 border-t lg:border-t-0 border-b border-[rgba(255,255,255,0.04)] mx-0 z-10 relative">
         {[
-          { icon: Calendar, stat: "+3", subtitle1: "Années", subtitle2: "d'expérience" },
-          { icon: Grid, stat: "10+", subtitle1: "Projets", subtitle2: "réalisés" },
-          { icon: GraduationCap, stat: "Formateur", subtitle1: "Développement", subtitle2: "Web" },
-          { icon: Users, stat: "Accompagnement", subtitle1: "Étudiants &", subtitle2: "Apprenants" }
+          { icon: Calendar, stat: "+3", subtitle1: "Années d'expérience", subtitle2: "" },
+          { icon: Code, stat: "10+", subtitle1: "Projets réalisés", subtitle2: "(Inclus confidentiels)" },
+          { icon: GraduationCap, stat: "Formateur", subtitle1: "Dev & Cyber Web", subtitle2: "" },
+          { icon: Users, stat: "Accompagnement", subtitle1: "Étudiants et apprentis", subtitle2: "" }
         ].map((item, i) => (
-          <div key={i} className="p-6 md:p-8 flex flex-col items-start gap-4 border-r border-border last:border-r-0 border-b md:border-b-0">
-            <item.icon className="w-6 h-6 text-primary" />
-            <div>
-              <div className="text-xl md:text-2xl font-bold text-foreground mb-1">{item.stat}</div>
-              <div className="text-xs text-muted-foreground leading-tight">
-                {item.subtitle1}<br/>{item.subtitle2}
+          <div
+            key={i}
+            className={`flex flex-col items-start gap-3 lg:gap-4 ${i !== 0 && i !== 2 ? 'pl-2 sm:pl-6 lg:pl-10 lg:border-l lg:border-[rgba(255,255,255,0.04)]' : 'pr-2 sm:pr-0'} ${i === 2 && 'lg:pl-10 lg:border-l lg:border-[rgba(255,255,255,0.04)]'} ${i === 2 || i === 3 ? 'pt-8 lg:pt-0' : 'pb-8 lg:pb-0'} ${(i === 0 || i === 1) ? 'border-b lg:border-b-0 border-[rgba(255,255,255,0.04)]' : ''}`}
+          >
+            <item.icon className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px] text-[var(--accent-blue)] opacity-90" strokeWidth={1.5} />
+            <div className="w-full">
+              <div className="text-[1.1rem] min-[370px]:text-[1.35rem] sm:text-[1.6rem] md:text-[2rem] font-[700] text-white leading-none mb-2 tracking-tighter whitespace-nowrap">
+                {item.stat}
+              </div>
+              <div className="text-[0.65rem] sm:text-[0.75rem] text-[var(--text-secondary)] leading-[1.4] font-[500] pr-1">
+                {item.subtitle1} {item.subtitle2}
               </div>
             </div>
           </div>
         ))}
       </section>
 
-      {/* Projects Section */}
-      <section className="p-6 md:p-12 lg:p-20">
-        <div className="flex items-center justify-between mb-10">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <h2 className="text-[12px] font-bold text-foreground uppercase tracking-widest">MES PROJETS RÉCENTS</h2>
+      {/* About Section */}
+
+      <section className="px-6 lg:pl-[120px] lg:px-12 py-16 lg:py-20 z-10 relative bg-[#0a0a0f] border-t border-[rgba(255,255,255,0.02)]">
+        <div className="max-w-[800px]">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-[6px] h-[6px] rounded-full bg-[var(--accent-blue)] mt-0.5" />
+            <h2 className="text-[0.7rem] sm:text-[0.75rem] font-[700] text-[#a1a1aa] uppercase tracking-[0.1em] leading-tight flex items-center">
+              À PROPOS DE MOI
+            </h2>
           </div>
-          <Link href="/projects" className="text-[11px] font-bold text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 uppercase tracking-wider">
-            VOIR TOUS LES PROJETS <ArrowRight className="w-3.5 h-3.5" />
+          <h3 className="text-[1.8rem] sm:text-[2.2rem] font-[800] text-white leading-[1.2] mb-8">
+            L'alliance entre le <span className="text-[var(--accent-blue)]">développement web</span> de pointe et la <span className="text-[#8B5CF6]">cybersécurité</span>.
+          </h3>
+          <div className="flex flex-col gap-5 text-[0.95rem] text-[var(--text-secondary)] leading-[1.75]">
+            <p>
+              Je suis un <strong className="text-[var(--text-primary)] font-[600]">développeur web passionné</strong>, spécialisé dans la conception, le déploiement et la maintenance d'applications robustes. Des architectures backend complexes (API REST, Webhooks) aux interfaces frontend dynamiques de premier plan, je maîtrise l'ensemble du cycle de vie d'un projet web.
+            </p>
+            <p>
+              En parallèle, j'interviens dans le domaine de la <strong className="text-[var(--text-primary)] font-[600]">cybersécurité (offensive et défensive)</strong>. Je traque les failles de systèmes critiques (pentest, rapports de vulnérabilités) et j'implémente des politiques de sécurité proactives pour le web.
+            </p>
+            <p className="border-l-2 border-[var(--accent-blue)] pl-4 italic mt-2 text-white/80">
+              Mon objectif : produire et déployer des applications non seulement fluides et performantes, mais <strong className="font-[600]">strictement sécurisées</strong> dès la première ligne de code ("Security by Design").
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="px-6 lg:pl-[120px] lg:px-12 py-12 lg:py-14 z-10 relative bg-[var(--bg-primary)]">
+        {/* Section Header */}
+        <div className="flex items-start sm:items-center justify-between mb-8 flex-col sm:flex-row gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-[6px] h-[6px] rounded-full bg-[var(--accent-blue)]" />
+            <h2 className="text-[0.7rem] sm:text-[0.75rem] font-[700] text-white uppercase tracking-[0.08em] leading-tight">
+              MES PROJETS <br className="sm:hidden" /> RÉCENTS
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="text-[0.65rem] sm:text-[0.7rem] font-[600] text-[var(--text-secondary)] hover:text-white transition-colors flex items-center gap-2 group uppercase tracking-widest"
+          >
+            VOIR TOUS LES <br className="sm:hidden" /> PROJETS
+            <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {projectsLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="border border-border bg-card">
-                <div className="aspect-[16/10] bg-border/50 animate-pulse" />
-                <div className="p-6 space-y-4">
-                  <div className="h-5 bg-border/50 w-2/3 animate-pulse" />
-                  <div className="space-y-2">
-                    <div className="h-3 bg-border/50 w-full animate-pulse" />
-                    <div className="h-3 bg-border/50 w-4/5 animate-pulse" />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {topProjects.map((project) => (
-              <Link key={project.id} href={`/projects/${project.slug}`} className="group flex flex-col bg-card border border-border transition-colors hover:border-primary/50">
-                <div className="aspect-[16/10] relative overflow-hidden bg-background/50 border-b border-border flex items-center justify-center">
-                  {/* Subtle placeholder since we don't have real screenshots */}
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-background to-background" />
-                  <div className="text-muted-foreground/30 font-mono text-4xl font-bold tracking-tighter mix-blend-overlay">
-                    {project.name.substring(0, 2).toUpperCase()}
-                  </div>
-                  {project.screenshots && project.screenshots.length > 0 && (
-                     <img src={project.screenshots[0]} alt={project.name} className="absolute inset-0 w-full h-full object-cover z-10" />
+        {/* Projects Grid (Vrais projets tirés du JSON) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projectsData.slice(0, 3).map(project => (
+            <Link key={project.id} href={`/projects`}>
+              <div className="bg-[var(--bg-card)] rounded-xl overflow-hidden flex flex-col h-full border border-[var(--border-subtle)] hover:border-[rgba(255,255,255,0.1)] transition-all duration-300 group">
+
+                {/* Zone Image */}
+                <div className="w-full aspect-[16/10] overflow-hidden relative bg-[#0a0a0f] border-b border-[var(--border-subtle)]">
+                  {(project as any).image ? (
+                    <img
+                      src={(project as any).image}
+                      alt={project.title}
+                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${(project as any).isPortrait ? 'object-contain bg-[#1a0a2e]' : 'object-cover'
+                        }`}
+                    />
+                  ) : (
+                    <div className="flex flex-col items-center justify-center gap-2 w-full h-full text-[var(--text-muted)] text-[0.7rem] font-[700] uppercase tracking-widest bg-gradient-to-br from-[#111116] to-[#0a0a0f]">
+                      {project.category === 'API REST' ? (
+                        <>
+                          <span className="text-[1.5rem]">{'{ }'}</span>
+                          <span>API sans interface</span>
+                        </>
+                      ) : project.category === 'Extension VS Code' ? (
+                        <>
+                          <span className="text-[1.5rem]">⌨️</span>
+                          <span>Extension VS Code</span>
+                        </>
+                      ) : (
+                        <span>Capture d'écran à venir</span>
+                      )}
+                    </div>
                   )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-80 pointer-events-none" />
                 </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="text-[16px] font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{project.name}</h3>
-                  <p className="text-[12px] text-muted-foreground line-clamp-2 mb-6 flex-1 leading-relaxed">
-                    {project.description}
+
+                {/* Contenu */}
+                <div className="p-6 flex flex-col flex-1 relative z-10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-[0.65rem] font-[700] uppercase tracking-widest text-[var(--accent-blue)]">
+                      {project.category}
+                    </span>
+                    {(project as any).isPrivate && (
+                      <span className="text-[0.6rem] font-[700] uppercase tracking-[0.05em] px-2 py-0.5 rounded bg-[rgba(255,255,255,0.05)] text-[var(--text-muted)] border border-[rgba(255,255,255,0.05)]">
+                        PRIVÉ
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-[1.1rem] font-[700] text-white mb-2">{project.title}</h3>
+                  <p className="text-[var(--text-secondary)] text-[0.85rem] leading-[1.6] flex-1 mb-6">
+                    {project.description.length > 130 ? project.description.substring(0, 130) + '...' : project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.slice(0, 3).map(tech => (
-                      <span key={tech} className="px-2.5 py-1 text-[10px] font-semibold tracking-wider uppercase border border-border text-muted-foreground bg-background">
-                        {tech}
+                    {project.tags.slice(0, 3).map(t => (
+                      <span key={t} className="bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] text-[var(--text-secondary)] text-[0.65rem] font-[500] px-2.5 py-1 rounded-[6px] tracking-wide">
+                        {t}
                       </span>
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-border mt-auto flex items-center text-[11px] font-bold text-primary tracking-wider uppercase">
+                  <div className="mt-auto flex items-center text-[var(--text-secondary)] group-hover:text-white transition-colors text-[0.7rem] font-[700] uppercase tracking-wider">
                     VOIR LE PROJET <ArrowRight className="w-3.5 h-3.5 ml-2 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
-        )}
+
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
     </div>
   )

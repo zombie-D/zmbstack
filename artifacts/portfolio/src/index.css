@@ -4,100 +4,42 @@
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
 
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: hsl(var(--background));
-  --color-foreground: hsl(var(--foreground));
-  --color-border: hsl(var(--border));
-  --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
-
-  --color-card: hsl(var(--card));
-  --color-card-foreground: hsl(var(--card-foreground));
-  --color-card-border: hsl(var(--card-border));
-
-  --color-popover: hsl(var(--popover));
-  --color-popover-foreground: hsl(var(--popover-foreground));
-  --color-popover-border: hsl(var(--popover-border));
-
-  --color-primary: hsl(var(--primary));
-  --color-primary-foreground: hsl(var(--primary-foreground));
-  --color-primary-border: var(--primary-border);
-
-  --color-secondary: hsl(var(--secondary));
-  --color-secondary-foreground: hsl(var(--secondary-foreground));
-  --color-secondary-border: var(--secondary-border);
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-  --color-muted-border: var(--muted-border);
-
-  --color-accent: hsl(var(--accent));
-  --color-accent-foreground: hsl(var(--accent-foreground));
-  --color-accent-border: var(--accent-border);
-
-  --color-destructive: hsl(var(--destructive));
-  --color-destructive-foreground: hsl(var(--destructive-foreground));
-  --color-destructive-border: var(--destructive-border);
-
-  --font-sans: var(--app-font-sans);
-  --font-mono: var(--app-font-mono);
-
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: calc(var(--radius));
-  --radius-lg: calc(var(--radius) + 2px);
-}
-
-:root, .dark {
-  --background: 231 21% 7%; /* #0D0E14 */
-  --foreground: 0 0% 100%; /* #FFFFFF */
-
-  --card: 232 31% 10%; /* #111320 */
-  --card-foreground: 0 0% 100%;
-  --card-border: 231 26% 16%; /* #1E2133 */
-
-  --popover: 232 31% 10%;
-  --popover-foreground: 0 0% 100%;
-  --popover-border: 231 26% 16%;
-
-  --primary: 225 100% 62%; /* #3B6BFF */
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 232 31% 10%;
-  --secondary-foreground: 0 0% 100%;
-
-  --muted: 231 21% 7%; /* Same as background for tabs etc */
-  --muted-foreground: 229 21% 55%; /* #7B82A0 */
-
-  --accent: 232 31% 10%;
-  --accent-foreground: 0 0% 100%;
-
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
-
-  --border: 231 26% 16%; /* #1E2133 */
-  --input: 231 26% 16%;
-  --ring: 225 100% 62%;
-
-  --app-font-sans: 'Inter', sans-serif;
-  --app-font-mono: 'Space Mono', monospace;
-  --radius: 0rem;
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-sidebar: #0d0d12;
+  --bg-card: #13131a;
+  --bg-card-hover: #1a1a22;
+  --border-subtle: rgba(255,255,255,0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #9a9aa5;
+  --text-muted: #6b6b76;
+  --accent-blue: #3b82f6;
+  --accent-blue-hover: #2563eb;
+  --badge-bg: rgba(59,130,246,0.1);
+  --badge-dot: #3b82f6;
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
 }
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }

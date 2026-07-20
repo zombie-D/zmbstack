@@ -1,28 +1,32 @@
 import * as React from "react"
 import { Link, useLocation } from "wouter"
 import { cn } from "@/lib/utils"
-import { Menu, X, ArrowDown } from "lucide-react"
-import { SiTiktok, SiYoutube, SiGithub, SiWhatsapp } from "react-icons/si"
-import { Linkedin } from "lucide-react"
-import { Button } from "@/components/ui/button"
+// Use smaller icons if possible or rely on Lucide
+import { Menu, X, Home, Briefcase, GraduationCap, Shield, Bookmark, FileText, Globe, Music, Youtube, Github, MessageCircle, Mail, ShoppingCart } from "lucide-react"
+import { ContactModal } from "@/components/ui/ContactModal"
 
 const NAV_ITEMS = [
-  { href: "/", label: "ACCUEIL" },
-  { href: "/projects", label: "PROJETS" },
-  { href: "/teaching", label: "ENSEIGNEMENT" },
-  { href: "/competences", label: "COMPÉTENCES" },
-  { href: "/experiences", label: "EXPÉRIENCES" },
-  { href: "/contenu", label: "CONTENU" },
-  { href: "/blog", label: "BLOG" },
-  { href: "/contact", label: "CONTACT" },
+  { href: "/", label: "ACCUEIL", icon: Home },
+  { href: "/projects", label: "PROJETS", icon: Briefcase },
+  { href: "/enseignement", label: "ENSEIGNEMENT", icon: GraduationCap },
+  { href: "/competences", label: "COMPÉTENCES", icon: Shield },
+  { href: "/experiences", label: "EXPÉRIENCES", icon: Bookmark },
+  { href: "/contenu", label: "CONTENU", icon: FileText },
+  { href: "/reseaux", label: "RÉSEAUX", icon: Globe },
 ]
 
-const SOCIAL_LINKS = [
-  { href: "https://tiktok.com", label: "TikTok", icon: SiTiktok, desc: "97.3k abonnés" },
-  { href: "https://youtube.com", label: "YouTube", icon: SiYoutube, desc: "12.1k abonnés" },
-  { href: "https://github.com", label: "GitHub", icon: SiGithub, desc: "18 dépôts publics" },
-  { href: "https://linkedin.com", label: "LinkedIn", icon: Linkedin, desc: "+500 relations" },
-  { href: "https://wa.me/1234567890", label: "WhatsApp", icon: SiWhatsapp, desc: "Me contacter" },
+const TiktokIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+)
+
+const SOCIALS = [
+  { name: "TikTok", stat: "97.3K abonnés", icon: TiktokIcon, url: "https://www.tiktok.com/@zmb_stack?is_from_webapp=1&sender_device=pc" },
+  { name: "TikTok Learn", stat: "2.3K abonnés", icon: TiktokIcon, url: "https://www.tiktok.com/@zmb_stack1?is_from_webapp=1&sender_device=pc" },
+  { name: "YouTube", stat: "Bientôt relancée", icon: Youtube, url: "https://youtube.com/@zmb_stack?si=SbG05zarCfwRJRh3" },
+  { name: "GitHub", stat: "18 dépôts", icon: Github, url: "https://github.com/zombie-D" },
+  { name: "WhatsApp", stat: "Chaîne d'actus", icon: MessageCircle, url: "https://whatsapp.com/channel/0029Vb6yDBlG3R3m8gEPfL1Q" }
 ]
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -34,142 +38,146 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   }, [location])
 
   return (
-    <div className="flex min-h-screen w-full flex-col md:flex-row bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
-      {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex w-[240px] flex-col border-r border-border bg-card sticky top-0 h-screen shrink-0">
-        <div className="p-8 pb-12">
-          <Link href="/" className="flex flex-col">
-            <span className="text-[22px] font-bold tracking-tight text-primary leading-none">ZMB</span>
-            <span className="text-[22px] font-bold tracking-tight text-foreground leading-none">STACK</span>
+    <div className="flex min-h-screen w-full bg-[var(--bg-primary)] text-[var(--text-primary)] font-['Inter'] relative">
+
+      {/* 
+        ==============================
+        MOBILE HEADER (Visible only < lg)
+        ==============================
+      */}
+      <div className="lg:hidden flex items-center justify-between p-4 bg-[var(--bg-sidebar)] border-b border-[var(--border-subtle)] fixed top-0 left-0 w-full z-40 shadow-sm">
+        <Link href="/" className="flex flex-col">
+          <span className="text-[var(--accent-blue)] font-[800] text-[1.4rem] leading-none mb-1">ZMB</span>
+          <span className="text-white font-[600] text-[1rem] tracking-[0.05em] leading-none">STACK</span>
+        </Link>
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="p-2 rounded-lg bg-[rgba(255,255,255,0.05)] text-white hover:bg-[rgba(255,255,255,0.1)] transition-colors"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* OVERLAY MOBILE */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/80 z-40 lg:hidden backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
+
+      {/* 
+        ==============================
+        SIDEBAR (Desktop + Mobile Slide-in)
+        ==============================
+      */}
+      <aside className={cn(
+        "flex w-[280px] lg:w-[280px] flex-col bg-[var(--bg-sidebar)] fixed left-0 top-0 h-screen z-50 border-r-0 lg:border-r border-[var(--border-subtle)] transition-transform duration-300 ease-in-out",
+        mobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+      )}>
+        {/* Close Button on Mobile */}
+        <button
+          className="lg:hidden absolute top-4 right-4 p-2 rounded-full bg-[rgba(255,255,255,0.05)] text-white hover:bg-[rgba(255,255,255,0.1)] z-50"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {/* Logo */}
+        <div className="px-8 pt-10 pb-6 tracking-wide">
+          <Link href="/">
+            <div className="flex flex-col">
+              <span className="text-[var(--accent-blue)] font-[800] text-[1.4rem] leading-none mb-1">ZMB</span>
+              <span className="text-white font-[600] text-[1.1rem] tracking-[0.05em] leading-none">STACK</span>
+            </div>
           </Link>
         </div>
-        
-        <nav className="flex-1 flex flex-col space-y-1">
+
+        {/* Nav Icons */}
+        <nav className="flex-1 flex flex-col px-4 overflow-y-auto custom-scrollbar gap-1">
           {NAV_ITEMS.map((item) => {
             const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
+            const Icon = item.icon;
             return (
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
-                  "flex items-center px-8 py-2.5 text-[13px] font-bold tracking-wider transition-all",
-                  isActive 
-                    ? "text-foreground bg-border/30 border-l-[3px] border-primary" 
-                    : "text-muted-foreground hover:text-foreground border-l-[3px] border-transparent"
+                  "flex items-center gap-4 px-4 py-3 rounded-xl transition-all relative group",
+                  isActive
+                    ? "bg-[rgba(255,255,255,0.06)] text-white"
+                    : "text-[var(--text-secondary)] hover:bg-[rgba(255,255,255,0.03)] hover:text-white"
                 )}
+                title={item.label}
               >
-                {item.label}
+                {isActive && (
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 bg-[var(--accent-blue)] rounded-r-md" />
+                )}
+                <Icon className={cn("w-[20px] h-[20px] transition-transform group-hover:scale-110", isActive ? "text-[var(--accent-blue)]" : "text-[var(--text-secondary)]")} strokeWidth={isActive ? 2.5 : 2} />
+                <span className="text-[0.75rem] font-[600] tracking-[0.05em] uppercase">{item.label}</span>
               </Link>
             )
           })}
-        </nav>
 
-        <div className="px-8 py-6 space-y-6">
-          <div>
-            <h4 className="text-[10px] font-semibold text-muted-foreground tracking-widest uppercase mb-4">PRÉSENCE EN LIGNE</h4>
-            <div className="space-y-4">
-              {SOCIAL_LINKS.map((item) => (
-                <a 
-                  key={item.href} 
-                  href={item.href} 
-                  target="_blank" 
+          {/* PRESENCE EN LIGNE */}
+          <div className="mt-8 border-t border-[rgba(255,255,255,0.04)] pt-8 pb-4">
+            <h4 className="text-[var(--text-muted)] text-[0.65rem] font-[700] tracking-[0.1em] uppercase mb-5 px-4">PRÉSENCE EN LIGNE</h4>
+            <div className="flex flex-col gap-2">
+              {SOCIALS.map(social => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between group"
+                  className="flex items-center gap-4 px-4 py-2 hover:bg-[rgba(255,255,255,0.03)] rounded-lg transition-colors group cursor-pointer"
                 >
-                  <div className="flex items-center gap-3">
-                    <item.icon className="w-[14px] h-[14px] text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-[12px] text-foreground font-medium group-hover:text-primary transition-colors">{item.label}</span>
+                  <div className="flex items-center justify-center flex-shrink-0">
+                    <social.icon className="w-[18px] h-[18px] text-[var(--text-secondary)] group-hover:text-white transition-colors group-hover:scale-110" strokeWidth={2} />
                   </div>
-                  <span className="text-[11px] text-muted-foreground">{item.desc}</span>
+                  <div className="flex flex-col">
+                    <span className="text-[0.85rem] font-[600] text-[var(--text-secondary)] group-hover:text-white transition-colors leading-tight">{social.name}</span>
+                    <span className="text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] transition-colors text-[0.75rem] mt-0.5 leading-tight">{social.stat}</span>
+                  </div>
                 </a>
               ))}
             </div>
           </div>
+        </nav>
 
-          <div className="pt-2">
-            <Button variant="outline" className="w-full justify-between text-[11px] font-semibold uppercase tracking-wider h-10 border-border text-foreground hover:bg-border/50">
-              TÉLÉCHARGER MON CV
-              <ArrowDown className="w-3.5 h-3.5" />
-            </Button>
-          </div>
+        {/* Bouton Contact & Footer */}
+        <div className="mt-auto p-6 flex flex-col gap-4">
+          <a
+            href="https://zmb-stack.mychariow.shop"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] text-[var(--accent-blue)] font-[700] text-[0.75rem] uppercase tracking-[0.08em] rounded-lg hover:text-white hover:bg-[var(--accent-blue)] transition-all shadow-lg"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            <span>MA BOUTIQUE</span>
+          </a>
 
-          <div className="text-[10px] text-muted-foreground leading-relaxed pt-2 border-t border-border">
-            © 2025 ZMB Stack<br/>Tous droits réservés.
+          <button
+            onClick={() => window.dispatchEvent(new Event('open-contact-modal'))}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-[var(--accent-blue)] text-white font-[700] text-[0.75rem] uppercase tracking-[0.08em] rounded-lg hover:opacity-90 transition-opacity shadow-lg"
+          >
+            <Mail className="w-4 h-4" />
+            <span>ME CONTACTER</span>
+          </button>
+
+          <div className="text-[var(--text-muted)] text-[0.7rem] font-[500] leading-relaxed mt-2">
+            <p>© 2026 ZMB Stack</p>
+            <p>Tous droits réservés.</p>
           </div>
         </div>
       </aside>
 
-      {/* Mobile Topbar */}
-      <header className="md:hidden flex items-center justify-between p-5 border-b border-border bg-card sticky top-0 z-50">
-        <Link href="/" className="flex flex-col">
-          <div className="flex items-baseline gap-1">
-            <span className="text-lg font-bold tracking-tight text-primary leading-none">ZMB</span>
-            <span className="text-lg font-bold tracking-tight text-foreground leading-none">STACK</span>
-          </div>
-        </Link>
-        <button 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="text-foreground p-1"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </header>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[61px] bg-card z-40 border-b border-border flex flex-col overflow-y-auto">
-          <nav className="p-6 space-y-1">
-            {NAV_ITEMS.map((item) => {
-              const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "block px-4 py-3 text-sm font-bold tracking-wider transition-colors",
-                    isActive ? "text-primary bg-border/30 border-l-2 border-primary" : "text-muted-foreground hover:text-foreground border-l-2 border-transparent"
-                  )}
-                >
-                  {item.label}
-                </Link>
-              )
-            })}
-          </nav>
-
-          <div className="px-10 py-6 border-t border-border">
-            <h4 className="text-[11px] font-semibold text-muted-foreground tracking-widest uppercase mb-5">PRÉSENCE EN LIGNE</h4>
-            <div className="space-y-5">
-              {SOCIAL_LINKS.map((item) => (
-                <a 
-                  key={item.href} 
-                  href={item.href} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-3">
-                    <item.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="text-sm text-foreground font-medium group-hover:text-primary transition-colors">{item.label}</span>
-                  </div>
-                  <span className="text-xs text-muted-foreground">{item.desc}</span>
-                </a>
-              ))}
-            </div>
-            
-            <div className="mt-8">
-              <Button variant="outline" className="w-full justify-between text-xs font-semibold uppercase tracking-wider h-12 border-border text-foreground">
-                TÉLÉCHARGER MON CV
-                <ArrowDown className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-w-0 max-w-full bg-background relative">
+      {/* Main Content */}
+      <main className="flex-1 w-full lg:ml-[280px] pt-[72px] lg:pt-0 overflow-x-hidden min-h-screen">
         {children}
       </main>
+
+      <ContactModal />
     </div>
   )
 }
