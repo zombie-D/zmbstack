@@ -271,6 +271,20 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Statistiques Profil (Comptage Visiteurs) */}
+      <section className="mt-20 mb-8 pt-8 border-t border-[rgba(255,255,255,0.05)] flex flex-col items-center justify-center">
+        <p className="text-[var(--text-muted)] text-[0.65rem] font-[800] uppercase tracking-[0.15em] mb-4 text-center">
+          Trafic Portfolio
+        </p>
+        <a href="https://hits.seeyoufarm.com" target="_blank" rel="noopener noreferrer" className="opacity-80 hover:opacity-100 transition-opacity drop-shadow-md hover:scale-105 duration-300">
+          <img
+            src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fzmbstack.vercel.app&count_bg=%233B82F6&title_bg=%2313131A&icon=&icon_color=%23E7E7E7&title=VISITES+%28JOUR+%2F+TOTAL%29&edge_flat=true"
+            alt="Vues du Portfolio"
+            className="h-6"
+          />
+        </a>
+      </section>
     </div>
   )
 }
