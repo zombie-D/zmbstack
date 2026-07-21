@@ -1,9 +1,9 @@
 {
     "rootDirectory": "artifacts/portfolio",
-    "buildCommand": "npm run build",
+    "buildCommand": "pnpm run build",
     "outputDirectory": "dist/public",
-    "installCommand": "npm install",
-    "framework": null,
+    "installCommand": "corepack enable && pnpm install",
+    "framework": "vite",
     "rewrites": [
         {
             "source": "/(.*)",
