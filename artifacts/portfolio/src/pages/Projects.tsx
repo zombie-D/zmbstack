@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Lock } from 'lucide-react';
 import projectsData from '../data/projects.json';
 
 const FILTERS = ["Tous", "Web App", "Dashboard", "IA & Data", "Mobile"];
@@ -111,8 +111,8 @@ export default function Projects() {
       </div>
 
       {/* Bandeau confidentialité */}
-      <div className="mb-8 flex items-start gap-3 bg-[rgba(255,255,255,0.025)] border border-[rgba(255,255,255,0.06)] rounded-xl px-5 py-4 max-w-[700px]">
-        <span className="text-[1.1rem] mt-0.5">🔒</span>
+      <div className="mb-8 flex items-start gap-4 bg-[rgba(255,255,255,0.025)] border border-[rgba(255,255,255,0.06)] rounded-xl px-5 py-4 max-w-[700px]">
+        <Lock className="w-5 h-5 text-[var(--accent-blue)] mt-0.5 shrink-0" />
         <p className="text-[0.82rem] text-[var(--text-secondary)] leading-relaxed">
           La majorité de mes projets sont <span className="text-white font-semibold">confidentiels ou sous accord de non-divulgation</span>.
           Pour en savoir plus ou accéder à des démonstrations,{" "}
