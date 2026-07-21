@@ -8,12 +8,12 @@ export default function Home() {
     <div className="flex flex-col pt-2 relative">
       {/* Top Bar - Header */}
       <div className="flex items-start sm:items-center justify-between px-6 lg:px-10 py-5 gap-4">
-        <div className="font-mono bg-[#111115] border border-white/5 rounded-md px-3 py-1.5 flex flex-wrap items-center gap-2 w-fit mb-2 sm:mb-0">
-          <span className="text-[var(--accent-blue)] opacity-80">&gt;_</span>
-          <span className="text-[0.65rem] sm:text-[0.7rem] font-[500] text-gray-300">
-            roles = [<span className="text-[var(--accent-blue)]">"Dev & Cyber"</span>, <span className="text-[var(--accent-blue)]">"Formateur"</span>, <span className="text-[var(--accent-blue)]">"Créateur"</span>]
+        <div className="font-mono bg-[#111115] border border-white/5 rounded-md px-3 py-2 w-full sm:w-fit mb-2 sm:mb-0 text-[0.65rem] sm:text-[0.7rem] leading-relaxed">
+          <span className="text-[var(--accent-blue)] opacity-80 mr-2">&gt;_</span>
+          <span className="font-[500] text-gray-300">
+            roles = [<span className="text-[var(--accent-blue)] break-words">"Dev&nbsp;&&nbsp;Cyber"</span>, <span className="text-[var(--accent-blue)]">"Formateur"</span>, <span className="text-[var(--accent-blue)]">"Créateur"</span>]
           </span>
-          <div className="w-1.5 h-[0.7rem] bg-gray-400 animate-pulse ml-0.5" />
+          <span className="inline-block w-1.5 h-[0.7rem] bg-gray-400 animate-pulse ml-1 align-middle" />
         </div>
         <button
           onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}
