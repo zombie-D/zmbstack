@@ -19,13 +19,6 @@ export default function Home() {
             <span className="inline-block w-1.5 h-[0.75rem] bg-gray-400 animate-pulse ml-1 align-baseline translate-y-[1px]" />
           </div>
         </div>
-
-        {/* Terminal Minimaliste (Mobileiquement) */}
-        <div className="block sm:hidden font-mono text-[0.7rem] bg-[#111115] border border-white/5 px-3 py-2 rounded-md w-full">
-          <span className="text-[var(--accent-blue)] opacity-80 mr-2">&gt;_</span>
-          <span className="text-gray-300">Dev / Formateur / Créateur</span>
-          <span className="inline-block w-1.5 h-[0.7rem] bg-gray-400 animate-pulse ml-1 align-middle" />
-        </div>
         <button
           onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}
           className="border border-[rgba(255,255,255,0.1)] text-[var(--text-secondary)] hover:text-white rounded-lg px-3 sm:px-4 py-2 font-[600] text-[0.65rem] sm:text-[0.7rem] tracking-widest flex items-center justify-center gap-1 sm:gap-2 hover:bg-[rgba(255,255,255,0.03)] transition-colors uppercase text-center flex-shrink-0"
