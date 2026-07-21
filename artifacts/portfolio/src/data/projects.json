@@ -31,18 +31,18 @@
   },
   {
     "id": "zmbacademy",
-    "title": "Z-Academy Core",
-    "category": "EdTech",
-    "thumbStyle": "light-dashboard",
-    "description": "Développement front-end et design UI d'une plateforme de e-learning moderne, avec suivi fin du parcours pédagogique et système de statistiques.",
+    "title": "R-Academy Core",
+    "category": "API REST",
+    "thumbStyle": "dark-glow",
+    "glowColor": "#8B5CF6",
+    "description": "API backend complète développée en Node.js (Express) en Pure JS pour une plateforme e-learning. Elle gère la logique métier complexe : suivi fin du parcours pédagogique, gestion des utilisateurs et remontée des statistiques.",
     "tags": [
-      "Tailwind",
-      "React",
-      "TypeScript",
-      "Framer Motion"
+      "Express.js",
+      "Node.js",
+      "Pure JS",
+      "API REST"
     ],
-    "isPrivate": true,
-    "image": "/zmbacademy.jpg"
+    "isPrivate": true
   },
   {
     "id": "flozia",
