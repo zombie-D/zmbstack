@@ -13,8 +13,8 @@
             "iconText": "JS"
         },
         {
-            "name": "Python / Flask",
-            "level": 60,
+            "name": "Python",
+            "level": 40,
             "iconBg": "#1a2a3a",
             "iconText": "Py"
         },
