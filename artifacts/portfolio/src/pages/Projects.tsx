@@ -100,10 +100,12 @@ export default function Projects() {
 
       {/* Header */}
       <div className="mb-4">
-        <span className="inline-flex items-center gap-2 bg-[var(--badge-bg)] text-[var(--accent-blue)] rounded-full px-4 py-2 text-[0.75rem] font-bold uppercase mb-6">
-          <div className="w-2 h-2 rounded-full bg-[var(--accent-blue)] animate-pulse" />
-          Portfolio
-        </span>
+        <div className="flex items-center gap-3 mb-6">
+          <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
+          <span className="text-[0.75rem] font-[700] uppercase tracking-[0.2em] text-[var(--accent-blue)]">
+            PORTFOLIO
+          </span>
+        </div>
         <h1 className="text-[2rem] md:text-[2.5rem] font-[800] text-white mb-4">
           Mes <span className="text-[var(--accent-blue)]">Projets</span>
         </h1>

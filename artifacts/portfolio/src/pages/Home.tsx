@@ -9,9 +9,9 @@ export default function Home() {
       {/* Top Bar - Header */}
       <div className="flex items-start sm:items-center justify-between px-6 lg:px-10 py-5 gap-4">
         {/* Badge Formateur & Dev */}
-        <div className="flex items-start sm:items-center gap-2">
-          <div className="w-[6px] h-[6px] rounded-full bg-[var(--accent-blue)] mt-1.5 sm:mt-0 flex-shrink-0" />
-          <span className="text-[0.65rem] sm:text-[0.7rem] font-[600] uppercase tracking-[0.05em] text-[var(--text-secondary)] leading-tight">
+        <div className="flex items-start sm:items-center gap-3">
+          <div className="w-8 h-[1px] bg-[var(--accent-blue)] mt-2 sm:mt-0 shrink-0" />
+          <span className="text-[0.65rem] sm:text-[0.7rem] font-[700] uppercase tracking-[0.1em] text-[var(--text-secondary)] leading-tight">
             FORMATEUR EN DÉVELOPPEMENT <br className="sm:hidden" />& CYBERSÉCURITÉ WEB
           </span>
         </div>
@@ -56,13 +56,30 @@ export default function Home() {
 
           <div className="flex flex-col gap-6 w-full sm:w-auto mb-10 overflow-visible">
             {/* Réseaux Sociaux (Au-dessus des boutons) */}
-            <div className="flex items-center justify-center sm:justify-start gap-4">
-              <span className="text-[0.7rem] text-[var(--text-muted)] font-[600] uppercase tracking-widest hidden sm:block">Rejoignez-moi :</span>
-              <a href="https://www.tiktok.com/@zmb_stack?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer" className="text-[#00f2fe] border border-[#00f2fe]/30 rounded-full p-2.5 bg-[#00f2fe]/10 hover:bg-[#00f2fe]/20 hover:border-[#00f2fe] transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
+            <div className="flex items-center justify-center sm:justify-start flex-wrap gap-3">
+              {/* TikTok Principal */}
+              <a href="https://www.tiktok.com/@zmb_stack?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 text-[#00f2fe] border border-[#00f2fe]/30 rounded-full px-4 py-2 bg-[#00f2fe]/10 hover:bg-[#00f2fe]/20 hover:border-[#00f2fe] transition-all text-[0.75rem] font-[600]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
+                TikTok
               </a>
-              <a href="https://whatsapp.com/channel/0029Vb6yDBlG3R3m8gEPfL1Q" target="_blank" rel="noreferrer" className="text-[#25D366] border border-[#25D366]/30 rounded-full p-2.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 hover:border-[#25D366] transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              {/* TikTok Learn (Pédagogique) */}
+              <a href="https://www.tiktok.com/@zmb_stack1?is_from_webapp=1&sender_device=pc" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 text-[#00f2fe] border border-[#00f2fe]/30 rounded-full px-4 py-2 bg-[#00f2fe]/10 hover:bg-[#00f2fe]/20 hover:border-[#00f2fe] transition-all text-[0.75rem] font-[600]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
+                TikTok Learn
+              </a>
+              {/* YouTube */}
+              <a href="https://youtube.com/@zmb_stack?si=SbG05zarCfwRJRh3" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 text-[#FF0000] border border-[#FF0000]/30 rounded-full px-4 py-2 bg-[#FF0000]/10 hover:bg-[#FF0000]/20 hover:border-[#FF0000] transition-all text-[0.75rem] font-[600]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" /><path d="m10 15 5-3-5-3z" /></svg>
+                YouTube
+              </a>
+              {/* WhatsApp Canal */}
+              <a href="https://whatsapp.com/channel/0029Vb6yDBlG3R3m8gEPfL1Q" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 text-[#25D366] border border-[#25D366]/30 rounded-full px-4 py-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 hover:border-[#25D366] transition-all text-[0.75rem] font-[600]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                Canal WhatsApp
               </a>
             </div>
 

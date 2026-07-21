@@ -46,9 +46,12 @@ export default function Reseaux() {
 
         {/* Profile Info Orientée Dashoboard */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left flex-1 z-10 pt-2">
-          <div className="inline-flex items-center gap-2 bg-[var(--badge-bg)] text-[var(--accent-blue)] rounded-full px-3 py-1.5 text-[0.7rem] font-bold uppercase mb-4">
-            <div className="w-1.5 h-1.5 rounded-full bg-[var(--accent-blue)] animate-pulse" />
-            Connectons-nous
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-[1px] w-6 bg-[var(--accent-blue)]" />
+            <span className="text-[0.7rem] font-[700] uppercase tracking-[0.2em] text-[var(--accent-blue)]">
+              PRÉSENCE NUMÉRIQUE
+            </span>
+            <div className="h-[1px] w-6 bg-[var(--accent-blue)]" />
           </div>
 
           <h1 className="text-[1.8rem] md:text-[2.5rem] font-[800] text-white leading-tight mb-3">

@@ -83,9 +83,12 @@ export default function Teaching() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center gap-2 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] rounded-full px-5 py-2.5 text-[0.75rem] font-bold uppercase mb-8 backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-[var(--accent-blue)]" />
-            <span className="text-white tracking-widest">Pédagogie & Mentoring</span>
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
+            <span className="text-[0.75rem] font-[700] uppercase tracking-[0.2em] text-[var(--text-primary)]">
+              PÉDAGOGIE & MENTORING
+            </span>
+            <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
           </div>
 
           <h1 className="text-[2.8rem] sm:text-[4rem] lg:text-[5rem] font-[800] text-white leading-[1.05] mb-8 tracking-[-0.02em]">
