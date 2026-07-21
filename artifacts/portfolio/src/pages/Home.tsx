@@ -8,10 +8,10 @@ export default function Home() {
   const [visitCount, setVisitCount] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch('/api/visits')
+    fetch('https://api.countapi.xyz/hit/zmbstack.vercel.app/visits')
       .then(r => r.json())
-      .then(data => setVisitCount(data.count))
-      .catch(() => setVisitCount(null));
+      .then(data => setVisitCount(data.value))
+      .catch(() => { }); // silencieux si le service est indisponible
   }, []);
 
   return (
