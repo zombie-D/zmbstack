@@ -165,7 +165,14 @@ export default function Projects() {
             </div>
 
             <div className="project-body flex flex-col h-full bg-[var(--bg-card)] relative z-10 px-5 pb-5 pt-3">
-              <h4 className="text-[1.1rem] font-bold text-white mb-2">{project.title}</h4>
+              <h4 className="text-[1.1rem] font-bold text-white mb-2 flex flex-col gap-1 items-start">
+                {project.title}
+                {(project as any).isNotAdopted && (
+                  <span className="text-[0.6rem] font-black uppercase tracking-wider text-orange-400 bg-orange-400/10 border border-orange-400/20 px-2 py-0.5 rounded-sm">
+                    Non adopté par l'établissement
+                  </span>
+                )}
+              </h4>
               <p className="text-[0.85rem] text-[var(--text-secondary)] leading-relaxed mb-4">{project.description}</p>
 
               <div className="tags">

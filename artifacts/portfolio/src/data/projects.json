@@ -6,9 +6,10 @@
     "thumbStyle": "light-dashboard",
     "description": "Plateforme de gestion académique pour l'ESCAE Bénin. Elle centralise les données universitaires et intègre un système biométrique avec capteur d'empreinte digitale pour le suivi strict des présences.",
     "tags": [
+      "React",
+      "Tailwind",
       "Laravel",
-      "TailwindCSS",
-      "PHP"
+      "C++ (Firmware)"
     ],
     "isPrivate": true,
     "image": "/project-edtrack.png"
@@ -30,7 +31,7 @@
   },
   {
     "id": "zmbacademy",
-    "title": "ZMB Academy Core",
+    "title": "Z-Academy Core",
     "category": "EdTech",
     "thumbStyle": "light-dashboard",
     "description": "Développement front-end et design UI d'une plateforme de e-learning moderne, avec suivi fin du parcours pédagogique et système de statistiques.",
@@ -80,14 +81,14 @@
     "title": "ESCAE Bénin — Refonte",
     "category": "Site Institutionnel",
     "thumbStyle": "light-dashboard",
-    "description": "Refonte complète du site web de l'ESCAE Bénin : présentation de l'université, vitrines des filières (Licence & Master), galerie campus et débouchés professionnels.",
+    "description": "Refonte modernisée du site institutionnel de l'ESCAE Bénin. Présentation de l'université, vitrines des filières (Licence & Master) et débouchés.",
     "tags": [
-      "HTML / CSS",
-      "JavaScript",
-      "UI/UX Design",
-      "Responsive"
+      "React JS",
+      "Tailwind CSS",
+      "PHP"
     ],
     "isPrivate": false,
+    "isNotAdopted": true,
     "image": "/project-escaef.png"
   },
   {
