@@ -7,16 +7,24 @@ export default function Home() {
   return (
     <div className="flex flex-col pt-2 relative">
       {/* Top Bar - Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 lg:px-10 py-5 gap-4">
-        <div className="font-mono bg-[#111115] border border-white/5 rounded-md px-4 py-2.5 w-full sm:w-fit text-[0.7rem] sm:text-[0.75rem] leading-relaxed shadow-lg">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 lg:px-10 py-5 gap-y-4 gap-x-2 w-full">
+        {/* Terminal Complet (Desktop & Tablet) */}
+        <div className="hidden sm:block font-mono bg-[#111115] border border-white/5 rounded-md px-4 py-2.5 w-fit text-[0.75rem] leading-relaxed shadow-lg">
           <div className="text-gray-400 mb-1">
             <span className="text-[var(--accent-blue)] opacity-80 mr-2">&gt;_</span>
             <span>zmb.getRoles()</span>
           </div>
-          <div className="font-[500] text-gray-300 pl-3 border-l border-white/10 ml-1.5 flex flex-wrap items-center gap-x-1">
+          <div className="font-[500] text-gray-300 pl-3 border-l border-white/10 ml-1.5 flex items-center gap-x-1">
             [<span className="text-[var(--accent-blue)]">"Dev&nbsp;&&nbsp;Cyber"</span>, <span className="text-[var(--accent-blue)]">"Formateur"</span>, <span className="text-[var(--accent-blue)]">"Créateur"</span>]
             <span className="inline-block w-1.5 h-[0.75rem] bg-gray-400 animate-pulse ml-1 align-baseline translate-y-[1px]" />
           </div>
+        </div>
+
+        {/* Terminal Minimaliste (Mobileiquement) */}
+        <div className="block sm:hidden font-mono text-[0.7rem] bg-[#111115] border border-white/5 px-3 py-2 rounded-md w-full">
+          <span className="text-[var(--accent-blue)] opacity-80 mr-2">&gt;_</span>
+          <span className="text-gray-300">Dev / Formateur / Créateur</span>
+          <span className="inline-block w-1.5 h-[0.7rem] bg-gray-400 animate-pulse ml-1 align-middle" />
         </div>
         <button
           onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}
