@@ -8,12 +8,12 @@ export default function Home() {
     <div className="flex flex-col pt-2 relative">
       {/* Top Bar - Header */}
       <div className="flex items-start sm:items-center justify-between px-6 lg:px-10 py-5 gap-4">
-        {/* Badge Formateur & Dev */}
-        <div className="flex items-start sm:items-center gap-3">
-          <div className="w-8 h-[1px] bg-[var(--accent-blue)] mt-2 sm:mt-0 shrink-0" />
-          <span className="text-[0.65rem] sm:text-[0.7rem] font-[700] uppercase tracking-[0.1em] text-[var(--text-secondary)] leading-tight">
-            FORMATEUR EN DÉVELOPPEMENT <br className="sm:hidden" />& CYBERSÉCURITÉ WEB
+        <div className="font-mono bg-[#111115] border border-white/5 rounded-md px-3 py-1.5 flex items-center gap-2 w-fit mb-2 sm:mb-0">
+          <span className="text-[var(--accent-blue)] opacity-80">&gt;_</span>
+          <span className="text-[0.65rem] sm:text-[0.7rem] font-[500] text-gray-300">
+            Formateur.init(<span className="text-[var(--accent-blue)]">"Dev & Cyber Web"</span>)
           </span>
+          <div className="w-1.5 h-[0.7rem] bg-gray-400 animate-pulse ml-0.5" />
         </div>
         <button
           onClick={() => window.dispatchEvent(new CustomEvent('open-contact-modal'))}

@@ -98,16 +98,11 @@ export default function Projects() {
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
 
-      {/* Header */}
+      {/* Header (Markdown Style) */}
       <div className="mb-4">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
-          <span className="text-[0.75rem] font-[700] uppercase tracking-[0.2em] text-[var(--accent-blue)]">
-            PORTFOLIO
-          </span>
-        </div>
-        <h1 className="text-[2rem] md:text-[2.5rem] font-[800] text-white mb-4">
-          Mes <span className="text-[var(--accent-blue)]">Projets</span>
+        <h1 className="text-[2rem] md:text-[2.5rem] font-[800] text-white mb-4 flex items-center gap-3">
+          <span className="text-[var(--accent-blue)] font-mono font-normal">/</span>
+          <span>Mes <span className="text-[var(--accent-blue)]">Projets</span></span>
         </h1>
         <p className="text-[0.9rem] text-[var(--text-secondary)] max-w-[520px] leading-relaxed">
           Une sélection de projets web, d'applications et d'outils

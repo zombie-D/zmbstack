@@ -83,17 +83,9 @@ export default function Teaching() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
-            <span className="text-[0.75rem] font-[700] uppercase tracking-[0.2em] text-[var(--text-primary)]">
-              PÉDAGOGIE & MENTORING
-            </span>
-            <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
-          </div>
-
-          <h1 className="text-[2.8rem] sm:text-[4rem] lg:text-[5rem] font-[800] text-white leading-[1.05] mb-8 tracking-[-0.02em]">
-            Transformer le <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-blue)] to-cyan-300">potentiel</span> en <br className="hidden md:block" />
-            expertise technique.
+          <h1 className="text-[2.8rem] sm:text-[4rem] lg:text-[5rem] font-[800] text-white leading-[1.05] mb-8 tracking-[-0.02em] flex flex-wrap items-center justify-center gap-3 w-full">
+            <span className="text-[var(--accent-blue)] font-mono font-normal">/</span>
+            <span><span className="text-[var(--accent-blue)]">Pédagogie</span> <br className="sm:hidden" /> & transmission</span>
           </h1>
 
           <p className="text-[1rem] md:text-[1.2rem] text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">

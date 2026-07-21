@@ -27,14 +27,9 @@ export default function Contenu() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-            <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
-            <span className="text-[0.75rem] font-[700] uppercase tracking-[0.2em] text-[var(--accent-blue)]">
-              CRÉATION DE CONTENU
-            </span>
-          </div>
-          <h1 className="text-[2.2rem] md:text-[3.5rem] font-[800] text-white leading-tight mb-5">
-            CONTENU
+          <h1 className="text-[2.2rem] md:text-[3.5rem] font-[800] text-white leading-tight mb-5 flex items-center justify-center lg:justify-start gap-4 w-full">
+            <span className="text-[var(--accent-blue)] font-mono font-normal">/</span>
+            <span>CRÉATION DE CONTENU</span>
           </h1>
           <p className="text-[0.95rem] md:text-[1.05rem] text-[var(--text-secondary)] max-w-2xl leading-relaxed">
             Je partage mes connaissances, mes astuces de développement et mon quotidien de développeur/formateur à travers des vidéos courtes et longues.

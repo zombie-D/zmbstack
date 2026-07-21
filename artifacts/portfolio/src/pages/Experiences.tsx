@@ -93,14 +93,9 @@ export default function Experiences() {
           transition={{ duration: 0.5 }}
           className="mb-16 md:mb-20 text-center lg:text-left"
         >
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-            <div className="h-[1px] w-8 bg-[var(--accent-blue)]" />
-            <span className="text-[0.75rem] font-[700] uppercase tracking-[0.2em] text-[var(--accent-blue)]">
-              PARCOURS
-            </span>
-          </div>
-          <h1 className="text-[2rem] md:text-[3rem] font-[800] text-white mb-4 leading-tight">
-            Mes <span className="text-[var(--accent-blue)]">Expériences</span>
+          <h1 className="text-[2rem] md:text-[3rem] font-[800] text-white mb-4 leading-tight flex items-center justify-center lg:justify-start gap-3 w-full">
+            <span className="text-[var(--accent-blue)] font-mono font-normal">/</span>
+            <span>Mes <span className="text-[var(--accent-blue)]">Expériences</span></span>
           </h1>
           <p className="text-[0.95rem] md:text-[1rem] text-[var(--text-secondary)] max-w-2xl mx-auto lg:mx-0 leading-relaxed">
             Mon évolution professionnelle à travers des projets concrets,
