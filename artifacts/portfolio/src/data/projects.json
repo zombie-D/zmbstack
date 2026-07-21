@@ -1,10 +1,10 @@
 [
   {
     "id": "edtrack",
-    "title": "EdTrack - ESCAE",
+    "title": "EdTrack",
     "category": "Dashboard Admin",
     "thumbStyle": "light-dashboard",
-    "description": "Plateforme de gestion académique pour l'ESCAE Bénin. Elle centralise les données universitaires et intègre un système biométrique avec capteur d'empreinte digitale pour le suivi strict des présences.",
+    "description": "Système de gestion intelligente des présences couplé à un capteur d'empreintes digitales (électronique embarquée). Il permet un suivi précis de chaque étudiant pour les cours et les examens, avec une gestion complète des données et une facilité d'export des historiques.",
     "tags": [
       "React",
       "Tailwind",
