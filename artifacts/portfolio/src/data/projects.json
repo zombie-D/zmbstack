@@ -97,12 +97,12 @@
     "category": "Extension VS Code",
     "thumbStyle": "dark-glow",
     "glowColor": "#6366f1",
-    "description": "Extension de développement PHP Vanilla pour VS Code. Auto-complétion intelligente couvrant les cas d'usage courants : connexion PDO, CRUD complet, formulaires avec validation et logique de traitement.",
+    "description": "Extension de développement PHP Vanilla pour VS Code développée en Pure JavaScript. Convertie en package .vsix autonome, elle fonctionne de manière 100% hors-ligne pour offrir une auto-complétion intelligente sur les snippets PDO et CRUD.",
     "tags": [
-      "VS Code API",
-      "PHP",
-      "PDO",
-      "Auto-complétion"
+      "Pure JS",
+      ".vsix",
+      "Offline",
+      "VS Code API"
     ],
     "isPrivate": false
   }
