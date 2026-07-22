@@ -1,19 +1,10 @@
 import { ArrowUpRight, Calendar, Code, GraduationCap, Users, ArrowRight, ShoppingCart } from "lucide-react"
 import { Link } from "wouter"
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { cn } from "@/lib/utils"
 import projectsData from "@/data/projects.json"
 
 export default function Home() {
-  const [visitCount, setVisitCount] = useState<number | null>(null);
-
-  useEffect(() => {
-    fetch('/api/visits')
-      .then(r => r.json())
-      .then(data => { if (data.count) setVisitCount(data.count); })
-      .catch(() => { });
-  }, []);
-
   return (
     <div className="flex flex-col pt-2 relative">
       {/* Top Bar - Header */}
@@ -279,21 +270,6 @@ export default function Home() {
               </div>
             </Link>
           ))}
-        </div>
-      </section>
-
-      {/* Statistiques Profil (Comptage Visiteurs) */}
-      <section className="mt-20 mb-8 pt-8 border-t border-[rgba(255,255,255,0.05)] flex flex-col items-center justify-center gap-2">
-        <p className="text-[var(--text-muted)] text-[0.65rem] font-[800] uppercase tracking-[0.15em] text-center">
-          Visites Totales
-        </p>
-        <div className="font-mono px-4 py-1.5 bg-[#111115] border border-white/5 rounded-md text-[0.7rem] flex items-center gap-2">
-          <span className="text-[var(--accent-blue)] opacity-60">#</span>
-          {visitCount !== null ? (
-            <span className="text-white font-bold tracking-wider">{visitCount.toLocaleString('fr-FR')}</span>
-          ) : (
-            <span className="text-gray-600 animate-pulse">…</span>
-          )}
         </div>
       </section>
     </div>
