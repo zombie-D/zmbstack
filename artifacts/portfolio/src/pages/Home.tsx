@@ -283,20 +283,23 @@ export default function Home() {
         </div>
       </section>
 
-      {visitCount !== null && (
-        <section className="mt-20 mb-4 pt-12 border-t border-[rgba(255,255,255,0.05)] flex flex-col items-center justify-center gap-3 px-6">
-          <p className="text-[var(--text-muted)] text-[0.6rem] sm:text-[0.65rem] font-[800] uppercase tracking-[0.2em] text-center">
-            Visiteurs uniques
-          </p>
-          <div className="flex items-baseline gap-3">
-            <span className="text-[var(--accent-blue)] font-mono text-[2rem] sm:text-[3rem] opacity-40 leading-none select-none">#</span>
+      <section className="mt-20 mb-4 pt-12 border-t border-[rgba(255,255,255,0.05)] flex flex-col items-center justify-center gap-3 px-6">
+        <p className="text-[var(--text-muted)] text-[0.6rem] sm:text-[0.65rem] font-[800] uppercase tracking-[0.2em] text-center">
+          Visiteurs uniques
+        </p>
+        <div className="flex items-baseline gap-3">
+          <span className="text-[var(--accent-blue)] font-mono text-[2rem] sm:text-[3rem] opacity-40 leading-none select-none">#</span>
+          {visitCount !== null ? (
             <span className="font-mono text-[3.5rem] sm:text-[5rem] lg:text-[6.5rem] font-[900] text-white leading-none tracking-tight tabular-nums">
               {visitCount.toLocaleString('fr-FR')}
             </span>
-          </div>
-
-        </section>
-      )}
+          ) : (
+            <span className="font-mono text-[3.5rem] sm:text-[5rem] lg:text-[6.5rem] font-[900] leading-none tracking-tight">
+              <span className="inline-block w-[6rem] sm:w-[9rem] lg:w-[12rem] h-[3.5rem] sm:h-[4.5rem] lg:h-[5.5rem] bg-white/5 rounded-lg animate-pulse" />
+            </span>
+          )}
+        </div>
+      </section>
     </div>
   )
 }
