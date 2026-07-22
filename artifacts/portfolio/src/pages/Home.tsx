@@ -284,14 +284,19 @@ export default function Home() {
       </section>
 
       {visitCount !== null && (
-        <section className="mt-20 mb-8 pt-8 border-t border-[rgba(255,255,255,0.05)] flex flex-col items-center justify-center gap-2">
-          <p className="text-[var(--text-muted)] text-[0.65rem] font-[800] uppercase tracking-[0.15em] text-center">
+        <section className="mt-20 mb-4 pt-12 border-t border-[rgba(255,255,255,0.05)] flex flex-col items-center justify-center gap-3 px-6">
+          <p className="text-[var(--text-muted)] text-[0.6rem] sm:text-[0.65rem] font-[800] uppercase tracking-[0.2em] text-center">
             Visiteurs uniques
           </p>
-          <div className="font-mono px-4 py-1.5 bg-[#111115] border border-white/5 rounded-md text-[0.7rem] flex items-center gap-2" title="Trafic basé sur l'IP unique">
-            <span className="text-[var(--accent-blue)] opacity-60">#</span>
-            <span className="text-white font-bold tracking-wider">{visitCount.toLocaleString('fr-FR')}</span>
+          <div className="flex items-baseline gap-3">
+            <span className="text-[var(--accent-blue)] font-mono text-[2rem] sm:text-[3rem] opacity-40 leading-none select-none">#</span>
+            <span className="font-mono text-[3.5rem] sm:text-[5rem] lg:text-[6.5rem] font-[900] text-white leading-none tracking-tight tabular-nums">
+              {visitCount.toLocaleString('fr-FR')}
+            </span>
           </div>
+          <p className="text-[var(--text-muted)] text-[0.6rem] font-[500] tracking-wider text-center uppercase">
+            IPs distinctes depuis le lancement
+          </p>
         </section>
       )}
     </div>
