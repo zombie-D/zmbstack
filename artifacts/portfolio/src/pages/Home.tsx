@@ -294,9 +294,7 @@ export default function Home() {
               {visitCount.toLocaleString('fr-FR')}
             </span>
           </div>
-          <p className="text-[var(--text-muted)] text-[0.6rem] font-[500] tracking-wider text-center uppercase">
-            IPs distinctes depuis le lancement
-          </p>
+
         </section>
       )}
     </div>
