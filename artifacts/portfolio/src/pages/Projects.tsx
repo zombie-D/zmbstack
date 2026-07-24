@@ -169,7 +169,7 @@ export default function Projects() {
                 {project.title}
                 {(project as any).isNotAdopted && (
                   <span className="text-[0.6rem] font-black uppercase tracking-wider text-orange-400 bg-orange-400/10 border border-orange-400/20 px-2 py-0.5 rounded-sm">
-                    Non adopté par l'établissement
+                    déja adopté par l'établissement
                   </span>
                 )}
               </h4>
